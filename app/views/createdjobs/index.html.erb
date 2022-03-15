@@ -1,0 +1,24 @@
+<% @createdjobs.each do |job| %>
+	 <div class="container">
+    <div class="row">
+      <div class="card">
+        <div class="card-header">
+         your created jobs
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= job.name %></h5>
+          <p class="card-text"><%= %></p>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          
+           <li><%= link_to "Edit", edit_companyjob_path(job), class:'btn btn-primary' %></li>
+           <li><%= link_to "Destroy", companyjob_path(job), class:'btn btn-primary', data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li> 
+        </div>
+       </div>
+    </div>
+ </div>
+
+<% end %>
