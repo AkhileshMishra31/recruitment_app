@@ -77,3 +77,5 @@ gem "byebug"
 
 gem "sassc-rails"
 gem 'bootstrap', '~> 5.1.3'
+
+gem 'carrierwave', '~> 0.9'

@@ -1,0 +1,32 @@
+<h1>share your details to get this job <%= @id %></h1>
+
+<%= form_with(model: [@job, @job.applicants.build]) do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :qualification %><br>
+    <%= form.text_field :qualification %>
+  </div>
+  <div>
+    <%= form.label :salaryexpated %><br>
+    <%= form.text_field :salary %>
+  </div>
+  <div>
+    <%= form.label :skills %><br>
+    <%= form.text_field :skills %>
+  </div>
+   <div>
+    <%= form.label :experience %><br>
+    <%= form.text_field :experience %>
+  </div>
+  <div>
+    <%= form.label :attachment %>
+    <%= form.file_field :attachment %>
+  </div>
+     
+    <%= form.submit %>
+  </div>
+<% end %>

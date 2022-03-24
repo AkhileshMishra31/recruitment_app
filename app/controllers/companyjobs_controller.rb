@@ -16,7 +16,7 @@ class CompanyjobsController < ApplicationController
   def new
     if @role == "Company" 	
      @job = Companyjob.new
-   else
+    else
    	 redirect_back(fallback_location: root_path)
    	end
   end

@@ -1,17 +1,16 @@
 <h1 class="text-center my-4">available jobs <%= @jobs.count %></h1>
- <div class="container">
-
+<div class="container">
   <div class="row">
     <% if current_user &&  @role == "Company"%>
-      <%= link_to "create job",  new_companyjob_path  , class:'btn btn-primary'%>
+     <%= link_to "create job",  new_companyjob_path  , class:'btn btn-primary'%>
     <% end %>
+    </div>
   </div>
- </div>
 <ul>
-<% @jobs.each do |job| %>
- <div class="container">
-    <div class="row">
-      <div class="card">
+  <%@jobs.each do |job| %>
+  <div class="container">
+  <div class="row">
+    <div class="card">
         <div class="card-header">
          <h6><%= time_ago_in_words job.created_at %></h6>
           Featured Jobs created by <%= job.user.email if current_user %>

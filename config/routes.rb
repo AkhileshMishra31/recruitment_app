@@ -5,7 +5,10 @@ Rails.application.routes.draw do
    end
 
    devise_for :users
-   resources :companyjobs
+   resources :companyjobs do
+    resources :applicants, only:[:new,:create,:index]
+   end
+     
    get '/createdjobs' => 'createdjobs#index'
 
    root "homes#index"

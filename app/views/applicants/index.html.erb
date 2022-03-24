@@ -1,0 +1,10 @@
+<% @applicants.each do |applicant| %> 
+<h1><%= applicant.name %></h1>
+<h1><%= applicant.salary %></h1>
+<h1><%= applicant.qualification %></h1>
+<h1><%= applicant.skills %></h1>
+<h1><%= applicant.experience %></h1>
+
+<%= link_to rails_blob_path(applicant.filename, disposition: "attachment") %>
+
+<% end %>
