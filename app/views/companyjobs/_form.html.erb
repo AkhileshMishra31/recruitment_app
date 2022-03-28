@@ -23,7 +23,11 @@
    <div>
     <%= form.label :"profile-photo" %><br>
     <%= form.file_field :avatar%> 
-  </div>
+  </div> 
+  <div>
+    <%= form.label :"description of job" %><br>
+    <%= form.text_area :description, :cols => 30, :rows => 10 %>
+  </div> 
   <div>
     <%= form.submit %>
   </div>

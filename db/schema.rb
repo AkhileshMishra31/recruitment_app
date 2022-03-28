@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_24_064438) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_28_105310) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -45,11 +45,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_24_064438) do
     t.integer "user_id"
     t.integer "companyjob_id"
     t.string "name"
+    t.string "attachment"
     t.string "qualification"
     t.integer "salary"
     t.string "skills"
     t.integer "experience"
-    t.string "attachment"
     t.index ["companyjob_id"], name: "index_applicants_on_companyjob_id"
     t.index ["user_id"], name: "index_applicants_on_user_id"
   end
@@ -63,15 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_24_064438) do
     t.string "qualification"
     t.text "skills"
     t.integer "user_id"
+    t.text "description"
     t.index ["user_id"], name: "index_companyjobs_on_user_id"
-  end
-
-  create_table "documents", force: :cascade do |t|
-    t.integer "applicants_id", null: false
-    t.string "document"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["applicants_id"], name: "index_documents_on_applicants_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,5 +82,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_24_064438) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "documents", "applicants", column: "applicants_id"
 end

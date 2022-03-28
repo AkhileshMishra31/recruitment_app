@@ -1,31 +1,26 @@
 
 <div class="container">
-    <div class="row mx-2 my-2">
+    <div class="row mx-2 mb-4">
       <div class="col-md-8">
         <h1 class="text-center">we are hiring for  <%= @job.name %>  developer</h1>
       </div>
     </div>
      <div class="row my-2">
       <div class="col-md-2">
-        <%= image_tag @job.avatar if @job.avatar.attached? %>
+        <%= image_tag (@job.avatar) if @job.avatar.attached? %>
       </div>
       <div class="col-md-10">
         satna,m.p 
       </div>
       <div class="col-md-4 my-3">
-       post date :12/1/2000
+       post date :<%= @job.created_at.strftime("%m/%d/%Y") %>
       </div>
     </div>
     <div class="row my-4">
       <div class="col-10">
         <h3>descriptions of job </h3>
-       <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-      </ul>
+         <%= @job.description %>
+            
       </div>
     </div>
     <div class="row my-4">
@@ -56,12 +51,10 @@
 <!-- <image src="<%#=(url_for(@job.avatar)) %>" -->
 <%# end %>
 
-<ul>
   <% if current_user == @job.user %>
-  <li><%= link_to "Edit", edit_companyjob_path(@job) , class:'btn btn-primary' %></li>
-  <li><%= link_to "Destroy", companyjob_path(@job),class:'btn btn-primary', data: {
+  <%= link_to "Edit", edit_companyjob_path(@job) , class:'btn btn-primary' %></li>
+  <%= link_to "Destroy", companyjob_path(@job),class:'btn btn-primary', data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %></li>   
+                  } %>   
   <% end %>        
-</ul>

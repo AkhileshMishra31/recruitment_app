@@ -56,7 +56,7 @@ class CompanyjobsController < ApplicationController
 
   private
     def job_params 
-      params.require(:companyjob).permit(:name, :experience, :salary, :qualification, :skills, :avatar)
+      params.require(:companyjob).permit(:name, :experience, :salary, :qualification, :skills, :avatar, :description)
     end
     def user_role
     	@role = current_user.role if current_user

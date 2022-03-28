@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <% if current_user &&  @role == "Company"%>
-     <%= link_to "create job",  new_companyjob_path  , class:'btn btn-primary'%>
+     <%= link_to "create job",  new_companyjob_path  , class:'btn btn-primary w-50 text-center my-4'%> 
     <% end %>
     </div>
   </div>
@@ -17,16 +17,15 @@
         </div>
         <div class="card-body">
           <h5 class="card-title"><%= job.name %></h5>
-          <p class="card-text"><%= %></p>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"><%= job.experience %> years expreience is required</p>
+          <p class="card-text"><%= job.salary %></p></p>
           <% if current_user %>
                 <% if @role == "regularuser" %>
                     <%= link_to "Apply", job , class:'btn btn-primary'  %>
                 <% else %>
                     <%= link_to "explore", job , class:'btn btn-primary'  %>
                  <% end %>
-          <% else %>  
+             <% else %>  
           <%= link_to "sign in to apply", new_user_session_path , class:'btn btn-primary'  %>
           <% end %>
         </div>
@@ -35,3 +34,5 @@
  </div>
 <% end %>
 </ul>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/10.8.1/build.css" />
