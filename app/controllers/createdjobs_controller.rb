@@ -8,4 +8,11 @@ class CreatedjobsController < ApplicationController
 		 redirect_back(fallback_location: root_path) 
 		end
 	end
+	def show
+		if @role=="Company"
+		 @applicant = Applicant.find(params[:id])
+		else
+		 redirect_back(fallback_location: root_path) 
+		end
+	end
 end

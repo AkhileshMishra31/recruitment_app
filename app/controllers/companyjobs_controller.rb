@@ -11,6 +11,13 @@ class CompanyjobsController < ApplicationController
 	def show
 		@currentUser = current_user.id
 		@job = Companyjob.find(params[:id])
+		@checkapplied = @job.applicants
+		@appliedresult= true
+		@checkapplied.each do |applicant|
+			if @currentUser == applicant.id
+				@appliedresult= false
+			end
+		end
 	end
 
   def new

@@ -1,5 +1,5 @@
 <% @createdjobs.each do |job| %>
-	 <div class="container my-4">
+	 <div class="container my-4 py-3">
     <div class="row">
       <div class="card">
         <div class="card-header">
@@ -18,7 +18,13 @@
                   } %>
         </div>
         <% job.applicants.each do |applicant| %>
-           <%=applicant.name %>
+           <p class="font-weight-bold"><%=applicant.name.upcase %></p>
+          <div style="
+         display: flex;
+        flex-flow: row wrap;
+        justify-content: center;">
+          <%= link_to "show details", createdjob_path(:id => applicant), class:'btn btn-primary custom' %>
+          </div>
         <% end %>
         </div>
     </div>

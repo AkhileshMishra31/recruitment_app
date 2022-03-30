@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center mt-5">
+<div  class="card w-50">
+ <div class="container bootstrap snippets bootdey">
+<div class="panel-body inf-content">
+    <div class="row">
+        <div class="col-md-4">
+            <ul title="Ratings" class="list-inline ratings text-center">
+                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <strong>Information</strong><br>
+            <div class="table-responsive">
+            <table class="table table-user-information">
+                <tbody>
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                identification of applicant                                               
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            123456789     
+                        </td>
+                    </tr>
+                    <tr>    
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-user  text-primary"></span>    
+                                Name                                                
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                           <%= @applicant.name %>    
+                        </td>
+                    </tr>
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-cloud text-primary"></span>  
+                                  qualification                                             
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                             <%= @applicant.qualification %>  
+                        </td>
+                    </tr>
+
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+                                salary                                                
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                             <%= @applicant.salary %> 
+                        </td>
+                    </tr>
+
+
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-eye-open text-primary"></span> 
+                                skills                                               
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            <%= @applicant.skills %>
+                        </td>
+                    </tr>
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                experience                                           
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            <%= @applicant.experience %>
+                        </td>
+                    </tr>
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-calendar text-primary"></span>
+                                Applied on                                               
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                            <%= @applicant.created_at.strftime("%m/%d/%Y") %>
+                        </td>
+                    </tr>                                    
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>                                        
+</div>                                        
+</div>                                        

@@ -79,3 +79,5 @@ gem "sassc-rails"
 gem 'bootstrap', '~> 5.1.3'
 
 gem 'carrierwave', '~> 0.9'
+# gem 'devise-i18n'
+# gem 'devise-bootstrap-views', '~> 1.0'

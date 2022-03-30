@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_28_105310) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_30_052650) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_28_105310) do
     t.integer "salary"
     t.string "skills"
     t.integer "experience"
+    t.index ["companyjob_id", "user_id"], name: "index_applicants_on_companyjob_id_and_user_id", unique: true
     t.index ["companyjob_id"], name: "index_applicants_on_companyjob_id"
     t.index ["user_id"], name: "index_applicants_on_user_id"
   end
