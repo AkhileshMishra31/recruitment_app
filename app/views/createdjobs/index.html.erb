@@ -1,33 +1,137 @@
-<% @createdjobs.each do |job| %>
-	 <div class="container my-4 py-3">
-    <div class="row">
-      <div class="card">
-        <div class="card-header">
-         your created jobs
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><%= job.name %></h5>
-          <%= image_tag (job.avatar) if job.avatar.attached? %>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          
-           <%= link_to "Edit", edit_companyjob_path(job), class:'btn btn-primary' %>
+<div class="container-fluid fadedimage" style="height: 100vh; width: 100%;">
+</div>
+
+<div class="jobposts">
+  <div class="container-fluid py-2">
+    <% @createdjobs.each do |job| %>
+    <div class="container jobpost border" style="border-radius: 8px;
+      box-shadow: 0.6em 0.6em 1.2em rgb(0 0 0 / 5%); margin: 15px auto;">
+      <div class="row mx-2 my-2 px-2 py-2">
+       <div class="col-md-3">
+         <%= image_tag job.avatar if job.avatar.attached? %>
+      </div>
+      <div class="col-md-9">
+        <div class="jobdetails" style="display:flex; justify-content: space-between; align-items: center; ">
+        <h3 style="font-family: sans-serif; font-weight: 500;"><%= job.jobtype %></h3>
+        <p style="font-size: 25px;"> @<%= job.companyname%></p>
+        <p>posted:-<%= time_ago_in_words job.created_at %></p>
+      </div>
+      <div class="jobdetails" style="display:flex; justify-content: space-between; ">
+         <p style="font-size: 20px; color: #a0a0a0;">@<%= job.location%></</p>
+         <p style="font-size: 20px; color: #a0a0a0;"><%= job.jobcategory%></p>
+         <p style="font-size: 20px; color: #a0a0a0;"><%= job.salary %></p>
+      </div> 
+       <%= link_to "Edit", edit_companyjob_path(job), class:'btn btn-primary' %>
            <%= link_to "Destroy", companyjob_path(job), class:'btn btn-primary', data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   } %>
-        </div>
+      </div>
+     </div> 
+      <h5>applicants for this Job:-</h5> 
         <% job.applicants.each do |applicant| %>
-           <p class="font-weight-bold"><%=applicant.name.upcase %></p>
-          <div style="
-         display: flex;
-        flex-flow: row wrap;
-        justify-content: center;">
-          <%= link_to "show details", createdjob_path(:id => applicant), class:'btn btn-primary custom' %>
-          </div>
+          <h4>@<%= applicant.name%></h4>
+           <%= link_to "show details", createdjob_path(:id => applicant), class:'btn btn-primary custom' %>
         <% end %>
-        </div>
+     </div>
+    <% end %> 
+  </div>
+</div>
+<footer class="my-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Product</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Product 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Product 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Plans & Prices</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Frequently asked questions</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Company</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Job postings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">News and articles</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Contact & Support</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link"><i class="fas fa-phone"></i>+47 45 80 80 80</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-comments"></i>Live chat</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-envelope"></i>Contact us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-star"></i>Give feedback</a>
+          </li>
+        </ul>
+      </div>
     </div>
- </div>
 
-<% end %>
+    <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+    
+    <div class="row text-center">
+      <div class="col-md-4 box">
+        <span class="copyright quick-links">Copyright &copy; Your Website 2022
+        </span>
+      </div>
+      <div class="col-md-4 box">
+        <ul class="list-inline social-buttons">
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 box">
+        <ul class="list-inline quick-links">
+          <li class="list-inline-item">
+            <a href="#">Privacy Policy</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Terms of Use</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

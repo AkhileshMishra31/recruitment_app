@@ -1,0 +1,22 @@
+job category
+1.project manager
+2.software engineer
+
+job type
+part time
+full time
+
+
+location
+
+
+company logo
+
+pay range - 25000 -30000
+
+
+
+companyname
+jobtype
+jobcategory
+location

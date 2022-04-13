@@ -1,38 +1,158 @@
-<h1 class="text-center my-4">available jobs <%= @jobs.count %></h1>
-<div class="container">
-  <div class="row">
-    <% if current_user &&  @role == "Company"%>
-     <%= link_to "create job",  new_companyjob_path  , class:'btn btn-primary w-50 text-center my-4'%> 
-    <% end %>
+
+<div class="container-fluid fadedimage py-5" style="height: 100vh; width: 100%;">
+  <div class="container">
+    <form class="form-inline" action="/search" method="GET">
+    <div class="container" class="justify-content-center">
+    <div class="row">
+
+
+   <div class="search" style=" width: 80%;position: relative;display: flex; margin: 0 auto;">
+      <input type="text" class="searchTerm" placeholder="Search with Technology,Location," style=" width: 100%;border: 3px solid #00B4CC;border-right: none;padding: 5px;height: 40px;border-radius: 5px 0 0 5px;outline: none;color: #9DBFAF;" name="query" method = "GET">
+      <button type="submit" class="searchButton" style="width: 70px;border: 1px solid #00B4CC;background: #00B4CC;text-align: center;color: #fff;border-radius: 0 5px 5px 0;cursor: pointer;font-size: 20px;">
+       search
+     </button>
+   </div>    
+    </div>
+    </div>
+  </form>
+  </div>
+</div>
+<div class="jobposts" style=>
+  <div class="container-fluid py-2">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Available Jobs :- <%= @jobs.count %></h1>
+      </div>
     </div>
   </div>
-<ul>
   <%@jobs.each do |job| %>
-  <div class="container">
-  <div class="row">
-    <div class="card">
-        <div class="card-header">
-         <h6><%= time_ago_in_words job.created_at %></h6>
-          Featured Jobs created by <%= job.user.email if current_user %>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><%= job.name %></h5>
-          <p class="card-text"><%= job.experience %> years expreience is required</p>
-          <p class="card-text"><%= job.salary %></p></p>
+  <div class="container jobpost border" style="border-radius: 8px;
+    box-shadow: 0.6em 0.6em 1.2em rgb(0 0 0 / 5%); margin: 15px auto;">
+  <div class="row mx-2 my-2 px-2 py-2">
+    <div class="col-md-3">
+      <%= image_tag job.avatar if job.avatar.attached? %> </div>
+    <div class="col-md-9">
+      <div class="jobdetails" style="display:flex; ">
+        <h3 style="font-family: sans-serif; font-weight: 500;"><%= job.jobtype %></h3>
+        <span style="font-size: 25px; margin-left: 20px;"> @<%= job.companyname%></span>
+      </div>
+      <div class="jobdetails" style="display:flex; justify-content: space-between; ">
+         <p style="font-size: 20px; color: #a0a0a0;">@<%= job.location%></</p>
+         <p style="font-size: 20px; color: #a0a0a0;"><%= job.jobcategory%></p>
+         <p style="font-size: 20px; color: #a0a0a0;"><%= job.name %></p>
+         <p style="font-size: 20px; color: #a0a0a0;"><%= job.salary %></p>
+      </div> 
           <% if current_user %>
                 <% if @role == "regularuser" %>
-                    <%= link_to "Apply", job , class:'btn btn-primary'  %>
+                    <%= link_to "Apply", job , class:"btn btn-labeled btn-success"  %><span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>
                 <% else %>
                     <%= link_to "explore", job , class:'btn btn-primary'  %>
                  <% end %>
              <% else %>  
-          <%= link_to "sign in to apply", new_user_session_path , class:'btn btn-primary'  %>
+                    <%= link_to "sign in to apply", new_user_session_path , class:'btn btn-primary'  %>
           <% end %>
-        </div>
-       </div>
     </div>
- </div>
+  </div>
+</div>
 <% end %>
-</ul>
+</div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/10.8.1/build.css" />
+<footer class="my-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Product</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Product 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Product 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Plans & Prices</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Frequently asked questions</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Company</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Job postings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">News and articles</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Contact & Support</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link"><i class="fas fa-phone"></i>+47 45 80 80 80</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-comments"></i>Live chat</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-envelope"></i>Contact us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-star"></i>Give feedback</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+    
+    <div class="row text-center">
+      <div class="col-md-4 box">
+        <span class="copyright quick-links">Copyright &copy; Your Website 2022
+        </span>
+      </div>
+      <div class="col-md-4 box">
+        <ul class="list-inline social-buttons">
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 box">
+        <ul class="list-inline quick-links">
+          <li class="list-inline-item">
+            <a href="#">Privacy Policy</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Terms of Use</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+

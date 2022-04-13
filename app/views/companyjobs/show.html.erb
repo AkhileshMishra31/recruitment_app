@@ -1,66 +1,176 @@
-
-<div class="container">
-    <div class="row mx-2 mb-4">
-      <div class="col-md-8">
-        <h1 class="text-center">we are hiring for  <%= @job.name %>  developer</h1>
-      </div>
-    </div>
-     <div class="row my-2">
-      <div class="col-md-2">
-        <%= image_tag (@job.avatar) if @job.avatar.attached? %>
-      </div>
-      <div class="col-md-10">
-        satna,m.p 
-      </div>
-      <div class="col-md-4 my-3">
-       post date :<%= @job.created_at.strftime("%m/%d/%Y") %>
-      </div>
-    </div>
-    <div class="row my-4">
-      <div class="col-10">
-        <h3>descriptions of job </h3>
-         <%= @job.description %>
-            
-      </div>
-    </div>
-    <div class="row my-4">
-      <div class="col-10 my-2">
-        <h3>experience required:-</h1>
-      </div>
-      <div class="col-3">
-        <p><%= @job.experience %> years</p>
-      </div>
-    </div>
-    <div class="row my-4">
-      <div class="col-10 my-2">
-        <h3>qualificatios:-</h1>
-      </div>
-      <div class="col-3">
-        <p><%= @job.qualification %></p>
-      </div>
-    </div>
-    <div class="row mx-2 my-2">
-      <div class="col-md-6">
-       <!-- <button type="button" class="btn btn-primary">apply for job</button> -->
-       <% if current_user.role == "regularuser" %>
-              <% if @appliedresult %>
-                <%= link_to "Apply", new_companyjob_applicant_path(@job), class:'btn btn-primary'%>
-              <% else %>
-                <%= link_to "Applied", new_companyjob_applicant_path(@job), class:'btn btn-primary'%>
-              <%end %>
-       <% end %>
-      </div>
-    </div>
+<div class="container-fluid fadedimage" style="height: 100vh; width: 100%;">
 </div>
+<div class="jobposts my-2">
+  <div class="container-fluid py-2">
+     <div class="container jobpost border" style="border-radius: 8px;
+        box-shadow: 0.6em 0.6em 1.2em rgb(0 0 0 / 5%); margin: 15px auto;">
+        <div class="row mx-2 my-2 px-2 py-2">
+         <div class="col-md-3">
+            <%= image_tag @job.avatar if @job.avatar.attached? %>
+         </div>
+         <div class="col-md-9">
+            <div class="jobdetails" style="display:flex; ">
+              <h3 style="font-family: sans-serif; font-weight: 500;"><%= @job.jobtype %></h3>
+              <span style="font-size: 25px;"> @<%= @job.companyname%></span>
+            </div>
+            <div class="jobdetails" style="display:flex; justify-content: space-between; ">
+               <p style="font-size: 20px; color: #a0a0a0;">@<%= @job.location%></</p>
+               <p style="font-size: 20px; color: #a0a0a0;"><%= @job.jobcategory%></p>
+               <p style="font-size: 20px; color: #a0a0a0;"><%= @job.name %></p>
+               <p style="font-size: 20px; color: #a0a0a0;"><%= @job.jobtype %></p>
+           </div> 
+           <div class="jobdetails" style="display:flex; justify-content: space-between; ">
+             <% if current_user.role == "regularuser" %>
+                <% if @jobapplied  == true %>
+                  <%= link_to "Apply", new_companyjob_applicant_path(@job), class:'btn btn-labeled btn-success'%>
+                <% else %>
+                  <%= link_to "Applied", class:'btn btn-primary'%>
+                <%end %>
+            <% end %>
+           </div> 
+         </div>
+      </div>
+     </div>
+  </div>
+</div>
+<div class="jobposts my-2">
+ <h1 style=" margin-left:20px; font-family: sans-serif; font-weight: 500;"> We are hiring For <%= @job.name %> developer</h1>
+  <div class="container-fluid py-2">
+     <div class="row mx-2 my-2 px-2 py-2">
+       <div class="col-md-10" style="overflow-wrap: normal;">
+           description:-
+          <h5 style="font-family: sans-serif; font-weight: 500; overflow-wrap: anywhere;"><%= @job.description %></h5>
+      </div>
+    </div>
+    <div class="row mx-2 my-2 px-2 py-2">
+       <div class="col-md-2">
+           salary:-
+          <h3 style="font-family: sans-serif; font-weight: 500;"><%= @job.salary %></h3>
+      </div>
+    </div>
+    <div class="row mx-2 my-2 px-2 py-2">
+       <div class="col-md-6">
+           Qualification:-
+          <h3 style="font-family: sans-serif; font-weight: 500;"><%= @job.qualification %></h3>
+      </div>
+    </div>
+    <div class="row mx-2 my-2 px-2 py-2">
+       <div class="col-md-6">
+           skills required:-
+          <h3 style="font-family: sans-serif; font-weight: 500;"><%= @job.skills %></h3>
+      </div>
+    </div>
+    <div class="row mx-2 my-2 px-2 py-2">
+       <div class="col-md-6">
+           experience:-
+          <h3 style="font-family: sans-serif; font-weight: 500;"><%= @job.experience %> Years</h3>
+      </div>
+    </div>
+    <div class="row mx-2 my-2 px-2 py-2">
+       <div class="col-md-6">
+           job category:-
+          <h3 style="font-family: sans-serif; font-weight: 500;"><%= @job.jobcategory %> Years</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="my-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Product</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Product 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Product 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Plans & Prices</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Frequently asked questions</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Company</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Job postings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">News and articles</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Contact & Support</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link"><i class="fas fa-phone"></i>+47 45 80 80 80</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-comments"></i>Live chat</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-envelope"></i>Contact us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-star"></i>Give feedback</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+    
+    <div class="row text-center">
+      <div class="col-md-4 box">
+        <span class="copyright quick-links">Copyright &copy; Your Website 2022
+        </span>
+      </div>
+      <div class="col-md-4 box">
+        <ul class="list-inline social-buttons">
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 box">
+        <ul class="list-inline quick-links">
+          <li class="list-inline-item">
+            <a href="#">Privacy Policy</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Terms of Use</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 
 
-<!-- <image src="<%#=(url_for(@job.avatar)) %>" -->
-<%# end %>
-
-  <% if current_user == @job.user %>
-  <%= link_to "Edit", edit_companyjob_path(@job) , class:'btn btn-primary' %></li>
-  <%= link_to "Destroy", companyjob_path(@job),class:'btn btn-primary', data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %>   
-  <% end %>        

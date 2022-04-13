@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_30_052650) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_11_052018) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,6 +50,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_052650) do
     t.integer "salary"
     t.string "skills"
     t.integer "experience"
+    t.string "email"
+    t.string "phonenumber"
     t.index ["companyjob_id", "user_id"], name: "index_applicants_on_companyjob_id_and_user_id", unique: true
     t.index ["companyjob_id"], name: "index_applicants_on_companyjob_id"
     t.index ["user_id"], name: "index_applicants_on_user_id"
@@ -65,7 +67,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_052650) do
     t.text "skills"
     t.integer "user_id"
     t.text "description"
+    t.string "companyname"
+    t.string "jobtype"
+    t.string "jobcategory"
+    t.string "location"
     t.index ["user_id"], name: "index_companyjobs_on_user_id"
+  end
+
+  create_table "interviews", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "applicant_id"
+    t.string "location"
+    t.datetime "interviewtiming"
+    t.string "interviewer"
+    t.date "dateofinterview"
+    t.string "interviewroom"
+    t.string "Docstobring"
+    t.index ["applicant_id"], name: "index_interviews_on_applicant_id"
   end
 
   create_table "users", force: :cascade do |t|

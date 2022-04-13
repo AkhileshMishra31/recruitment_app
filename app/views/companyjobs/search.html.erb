@@ -1,0 +1,31 @@
+<h1><%=@query%></h1>
+<%@jobs.each do |job| %>
+  <div class="container jobpost border" style="border-radius: 8px;
+    box-shadow: 0.6em 0.6em 1.2em rgb(0 0 0 / 5%); margin: 15px auto;">
+  <div class="row mx-2 my-2 px-2 py-2">
+    <div class="col-md-3">
+      <%= image_tag job.avatar if job.avatar.attached? %> </div>
+    <div class="col-md-9">
+      <div class="jobdetails" style="display:flex; ">
+        <h3 style="font-family: sans-serif; font-weight: 500;"><%= job.jobtype %></h3>
+        <span style="font-size: 25px;"> @<%= job.companyname%></span>
+      </div>
+      <div class="jobdetails" style="display:flex; justify-content: space-between; ">
+         <p style="font-size: 20px; color: #a0a0a0;">@<%= job.location%></</p>
+         <p style="font-size: 20px; color: #a0a0a0;"><%= job.jobcategory%></p>
+         <p style="font-size: 20px; color: #a0a0a0;"><%= job.name %></p>
+         <p style="font-size: 20px; color: #a0a0a0;"><%= job.salary %></p>
+      </div> 
+          <% if current_user %>
+                <% if @role == "regularuser" %>
+                    <%= link_to "Apply", job , class:"btn btn-labeled btn-success"  %><span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>
+                <% else %>
+                    <%= link_to "explore", job , class:'btn btn-primary'  %>
+                 <% end %>
+             <% else %>  
+                    <%= link_to "sign in to apply", new_user_session_path , class:'btn btn-primary'  %>
+          <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

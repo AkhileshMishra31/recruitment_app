@@ -71,6 +71,7 @@ Rails.application.configure do
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
+  config.require_master_key = true
 
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
@@ -87,7 +88,33 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+  host = 'localhost:3000'
+  config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' }
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.delivery_method = :smtp
+  host = 'example.com' #replace with your own url
+  config.action_mailer.default_url_options = { host: host }
+
+      # SMTP settings for gmail
+      config.action_mailer.smtp_settings = {
+        :address              => "smtp.gmail.com",
+        :port                 => 587,
+        :user_name            => <gmail_username>,
+        :password             => <gmail_password>,
+        :authentication       => "plain",
+        :enable_starttls_auto => true
+      }
+      config.serve_static_assets = false
+
+      # Compress JavaScripts and CSS  
+      config.assets.compress = true
+
+      # Don't fallback to assets pipeline if a precompiled asset is missed  
+      config.assets.compile = false
+
+      # Generate digests for assets URLs  
+      config.assets.digest = true
+      
 end

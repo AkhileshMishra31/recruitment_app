@@ -1,38 +1,67 @@
-<%= image_tag @job.avatar if @job.avatar.attached? %>
+<div class="container-fluid fadedimage" style="height: 100vh; width: 100%;margin-bottom:-800px;">
+</div>
+<div class="container">
+  <div class="row">
+     <div class="col-md-4 mx-auto" style="color: red;">
+      <% if job.errors.any? %>
+    <ul>
+    <% job.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+     </div>
+  </div>
+</div>
+
 <div class ="form-box">
-  <h1>create a new job</h1>
-  <p>Using <a href="https://getbootstrap.com">Bootstrap</a> and <a href="https://www.formbucket.com">FormBucket</a></p>
+  <h1><%= edit %> job</h1>
 <%= form_with model: job do |form| %>
   <div class="form-group" >
-    <%= form.label :name %><br>
+    <%= form.label :Company_Name %><br>
+    <%= form.text_field :companyname,{:class => 'form-control'} %>
+  </div>
+  <div class="form-group">
+    <%= form.label :Qualification %><br />
+    <%= form.select :qualification, ["BE", "B-Tech", "MCA", "M-Tech","MBA","Phd"]%>
+  </div> 
+  <div class="form-group" >
+    <%= form.label :Technology %><br>
     <%= form.text_field :name,{:class => 'form-control'} %>
   </div>
+   <div class="form-group" >
+    <%= form.label :Skills_Required %><br>
+    <%= form.text_field :skills,{:class => 'form-control'}%> 
+  </div>
   <div class="form-group" >
-    <%= form.label :experience %><br>
+    <%= form.label :Overall_Experience %><br>
     <%= form.text_field :experience,{:class => 'form-control'} %>
   </div>
   <div class="form-group" >
-    <%= form.label :salary %><br>
+    <%= form.label :Salary %><br>
     <%= form.text_field :salary,{:class => 'form-control'} %>
   </div>
-  <div class="form-group" >
-    <%= form.label :qualification %><br>
-    <%= form.text_field :qualification,{:class => 'form-control'} %>
-  </div>
    <div class="form-group" >
-    <%= form.label :skills %><br>
-    <%= form.text_field :skills,{:class => 'form-control'}%> 
-  </div>
-   <div class="form-group" >
-    <%= form.label :"profile-photo" %><br>
+    <%= form.label :"Company_Logo" %><br>
     <%= form.file_field :avatar,{:class => 'form-control'}%> 
   </div>
+  <div class="form-group">
+    <%= form.label :Job_Type %><br />
+    <%= form.select :jobtype, ["Project Manager", "Software Engineer", "Associate Engineer", "Graphics designer"]%>
+  </div> 
+   <div class="form-group my-2">
+    <%= form.label :Job_Category %><br />
+    <%= form.select :jobcategory, ["fulltime", "remote", "parttime", "freelance"]%>
+  </div> 
+   <div class="form-group my-2">
+    <%= form.label :Job_location %><br />
+    <%= form.text_field :location,{:class => 'form-control'}%> 
+  </div> 
   <div class="form-group" >
-     <%= form.label :"description" %><br>
-    <%= form.text_field :description,{:class => 'form-control'}%> 
+     <%= form.label :"Job_Description" %><br>
+    <%= form.text_area :description,{:class => 'form-control'}%> 
   </div>
- 
-  <div class="form-group" >
+  <div class="form-group my-2" >
     <%= form.submit %>
   </div>
 <% end %>

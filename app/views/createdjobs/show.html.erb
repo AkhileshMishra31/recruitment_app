@@ -1,18 +1,14 @@
+<div class="container-fluid fadedimage" style="height: 100vh; width: 100%;margin-bottom:-700px;">
+</div>
 <div class="d-flex justify-content-center mt-5">
-<div  class="card w-50">
+<div  class="card w-50 shadow-lg p-3 mb-5 bg-white rounded">
  <div class="container bootstrap snippets bootdey">
 <div class="panel-body inf-content">
     <div class="row">
         <div class="col-md-4">
-            <ul title="Ratings" class="list-inline ratings text-center">
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-            </ul>
+            <h1>Applicant Details:- </h1>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mb-5">
             <strong>Information</strong><br>
             <div class="table-responsive">
             <table class="table table-user-information">
@@ -96,13 +92,39 @@
                         <td class="text-primary">
                             <%= @applicant.created_at.strftime("%m/%d/%Y") %>
                         </td>
-                    </tr>                                    
+                    </tr> 
+                    <tr>        
+                        <td>
+                            <strong>
+                                <span class="glyphicon glyphicon-calendar text-primary"></span>
+                                Applicant Resume                                               
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                           <%= link_to "Download", rails_blob_path(@applicant.avatar, disposition: 'attachment'), class:'btn btn-labeled btn-success' %>
+                        </td>
+                    </tr>                                     
                 </tbody>
             </table>
             </div>
         </div>
     </div>
+    <% if @schedule == true%>
+    <div style="text-align: center;">
+        <%= link_to "Already Scheduled! ",createdjob_path, class:'btn btn-labeled btn-danger'%>
+        <p>On <%= @date%></p>
+        <p>at<%=@time.strftime("%I:%M %p")%></p>
+   </div>
+    <% else %>
+    <%= link_to "Schedule Interview",new_createdjob_interview_path(@applicant), class:'btn btn-labeled btn-success'%>
+    <div style="text-align: center;">
+    </div>
+    <% end %>
+ </div>
+</div>                                        
+</div>                                        
 </div>
-</div>                                        
-</div>                                        
-</div>                                        
+
+
+
+

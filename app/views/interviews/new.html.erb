@@ -1,0 +1,36 @@
+<div class="container-fluid fadedimage" style="height: 100vh; width: 100%;margin-bottom:-750px;">
+</div>
+
+<div class ="form-box" >
+  <h1 style="font-size:30px;">Schedule Interview For <%= @applicant.name %></h1>
+<%= form_with(model: @interview, url: createdjob_interviews_path) do |form| %>
+ 
+  <div class="form-group">
+    <%= form.label :Interview_Timing %><br>
+    <%= form.time_field :interviewtiming,{:class => 'form-control'} %>
+  </div>
+  <div class="form-group">
+    <%= form.label :Date_of_Interview %><br>
+    <%= form.date_field :dateofinterview,{:class => 'form-control'} %>
+  </div>
+  <div class="form-group">
+    <%= form.label :Interview_Room %><br>
+    <%= form.select :interviewroom,["IR-001", "IR-002","IR-003"]%>
+  </div>
+   <div class="form-group" >
+    <%= form.label :Location %><br>
+    <%= form.text_field :location,{:class => 'form-control'}%>
+  </div>
+  <div class="form-group">
+    <%= form.label :Interviewer %><br>
+    <%= form.text_field :interviewer,{:class => 'form-control'} %>
+  </div>
+   <div class="form-group">
+    <%= form.label :Documents_to_bring %><br>
+    <%= form.text_field :Docstobring,{:class => 'form-control'} %>
+  </div>
+  <div class="my-2">
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>

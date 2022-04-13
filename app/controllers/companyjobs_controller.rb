@@ -5,17 +5,16 @@ class CompanyjobsController < ApplicationController
 		 if current_user
 	      @email = current_user.email 
 	    end
-		@jobs = Companyjob.all
+		@jobs = Companyjob.all.order('created_at desc')
 	end
 
 	def show
 		@currentUser = current_user.id
 		@job = Companyjob.find(params[:id])
-		@checkapplied = @job.applicants
-		@appliedresult= true
-		@checkapplied.each do |applicant|
-			if @currentUser == applicant.id
-				@appliedresult= false
+		@jobapplied = true;
+		@job.applicants.each do |applicant|
+			if applicant.user_id == current_user.id
+				@jobapplied = false;
 			end
 		end
 	end
@@ -60,10 +59,16 @@ class CompanyjobsController < ApplicationController
 	    @job.destroy
 	    redirect_to root_path, status: :see_other
 	end
+	def search
+		@query = params[:query]
+    @jobs=Companyjob.where(['location LIKE(?) OR jobtype LIKE(?) OR companyname LIKE(?) OR name LIKE(?)', "%#{@query }%", "%#{@query }%", "%#{@query}%", "%#{@query}%"])
+    render :index
+	end
 
   private
     def job_params 
-      params.require(:companyjob).permit(:name, :experience, :salary, :qualification, :skills, :avatar, :description)
+	      params.require(:companyjob).permit(:name, :experience, :salary, :qualification, :skills, :avatar, :description,:companyname,
+	      :jobtype,:jobcategory,:location)
     end
     def user_role
     	@role = current_user.role if current_user

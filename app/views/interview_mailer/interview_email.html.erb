@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @applicant.name %>Your Profile has been sortlisted our role as <%= @applicant.companyjob.jobtype %></h1>
+    <p>
+      <h1>Job Details :-</h1>
+       Salary is:-
+       <%= @job.salary %>.<br>
+       Job Category:
+       <%= @job.jobcategory %>.<br>
+       Job Type:
+       <%= @job.jobtype%>.<br>
+       Location for job
+       <%= @job.location %>.<br>
+    </p>
+    <p>
+      <h1>Interview Schedule</h1>
+        Your interview is scheduled at <span><%= @time %> on <%= @date %></span>
+    </p>
+    </p>
+    <p>Thanks! for choosing our platform </p>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+
+<div class="container">
+  <div class="row">
+    <div className="jobhome">
+      <div className="home__container">
+        <img
+          className="home__image"
+          src="https://static1.shine.com/l/m/images/blog/online_job_seach_portal_features.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h1 class="text-center my-4">available jobs <%= @jobs.count %></h1>
+<div class="container">
+  <div class="row">
+    <% if current_user &&  @role == "Company"%>
+     <%= link_to "create job",  new_companyjob_path  , class:'btn btn-primary w-50 text-center my-4'%> 
+    <% end %>
+    </div>
+  </div>
+<ul>
+  <%@jobs.each do |job| %>
+  <div class="container">
+  <div class="row">
+    <div class="card">
+        <div class="card-header">
+         <h6><%= time_ago_in_words job.created_at %></h6>
+          Featured Jobs created by <%= job.user.email if current_user %>
+        </div>
+        <div class="p-5">
+          technologies:
+          <h5 class="card-title"><%= job.name %></h5>
+          Details:
+          <h6>plase make sure to get all deatils very well </p>
+          <h6 class="card-title"><%= job.experience %> years expreience is required</h6>
+          <h6 class="card-title"><%= job.qualification %></h6>
+           applicants: 
+          <h6 class="card-title"><%= job.applicants.count %></h6>
+           Experience
+          <h6 class="card-title"><%= job.experience %></h6>
+          <h6 class="card-title"><%= job.salary %> as per inter view schduled</h6></p>
+          <% if current_user %>
+                <% if @role == "regularuser" %>
+                    <%= link_to "Apply", job , class:'btn btn-primary'  %>
+                <% else %>
+                    <%= link_to "explore", job , class:'btn btn-primary'  %>
+                 <% end %>
+             <% else %>  
+          <%= link_to "sign in to apply", new_user_session_path , class:'btn btn-primary'  %>
+          <% end %>
+        </div>
+       </div>
+    </div>
+ </div>
+<% end %>
+</ul>
+
+

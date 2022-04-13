@@ -9,8 +9,11 @@ Rails.application.routes.draw do
     resources :applicants, only:[:new,:create,:index, :show]
    end
      
-   # get '/createdjobs' => 'createdjobs#index'
-   resources :createdjobs, only:[:index, :show]
+   get '/aboutus' => 'aboutus#index'
+   resources :createdjobs, only:[:index, :show] do 
+    resources :interviews, only:[:new,:create]
+   end
 
    root "homes#index"
+   get '/search', to: "companyjobs#search"
 end
