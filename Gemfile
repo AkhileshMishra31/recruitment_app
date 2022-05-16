@@ -81,3 +81,6 @@ gem 'bootstrap', '~> 5.1.3'
 gem 'carrierwave', '~> 0.9'
 gem "letter_opener", group: :development
 
+
+
+

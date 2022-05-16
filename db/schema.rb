@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_11_052018) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_16_041316) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -57,6 +57,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_052018) do
     t.index ["user_id"], name: "index_applicants_on_user_id"
   end
 
+  create_table "bookmarkusers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "companyjob_id"
+    t.integer "user_id"
+    t.index ["companyjob_id"], name: "index_bookmarkusers_on_companyjob_id"
+    t.index ["user_id"], name: "index_bookmarkusers_on_user_id"
+  end
+
   create_table "companyjobs", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -87,6 +96,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_052018) do
     t.index ["applicant_id"], name: "index_interviews_on_applicant_id"
   end
 
+  create_table "interviewschedules", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -102,4 +116,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_052018) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookmarkusers", "companyjobs"
+  add_foreign_key "bookmarkusers", "users"
 end

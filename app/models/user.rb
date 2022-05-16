@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :bookmarkusers
   has_many :companyjobs
   has_many :applicants
   # Include default devise modules. Others available are:

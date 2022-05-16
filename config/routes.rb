@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
    root "homes#index"
    get '/search', to: "companyjobs#search"
+   get '/bookmarks', to: "bookmarkusers#bookmark"
 end

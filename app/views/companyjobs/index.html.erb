@@ -8,7 +8,7 @@
 
    <div class="search" style=" width: 80%;position: relative;display: flex; margin: 0 auto;">
       <input type="text" class="searchTerm" placeholder="Search with Technology,Location," style=" width: 100%;border: 3px solid #00B4CC;border-right: none;padding: 5px;height: 40px;border-radius: 5px 0 0 5px;outline: none;color: #9DBFAF;" name="query" method = "GET">
-      <button type="submit" class="searchButton" style="width: 70px;border: 1px solid #00B4CC;background: #00B4CC;text-align: center;color: #fff;border-radius: 0 5px 5px 0;cursor: pointer;font-size: 20px;">
+      <button type="submit" class="searchButton" style="width: 70px;background: black;text-align: center;color: #ddd;border-radius: 0 5px 5px 0;cursor: pointer;font-size: 20px;">
        search
      </button>
    </div>    
@@ -45,6 +45,8 @@
           <% if current_user %>
                 <% if @role == "regularuser" %>
                     <%= link_to "Apply", job , class:"btn btn-labeled btn-success"  %><span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>
+
+
                 <% else %>
                     <%= link_to "explore", job , class:'btn btn-primary'  %>
                  <% end %>
